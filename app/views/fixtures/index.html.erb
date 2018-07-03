@@ -1,0 +1,7 @@
+<p>Here are the teams involved today: <%= @fixtures.flatten.join(", ") %></p>
+
+<p><%= @teams_playing_first.first %> vs. <%= @teams_playing_first.last %></p>
+<p><%= @teams_playing_second.first %> vs. <%= @teams_playing_second.last %></p>
+
+
+<p><%= link_to "All results", results_path %></p>

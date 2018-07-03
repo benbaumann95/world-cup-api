@@ -11,11 +11,26 @@ class NationsController < ApplicationController
   def all_nations
     response = open('https://worldcup.sfg.io/teams/')
     json = JSON.parse(response.read)
-    raise
+
 
     @nations = []
     json.each do |nation|
       @nations << nation["country"]
     end
+
+
+    split_groups = json.group_by {|nation| nation["group_letter"] }
+
+    @groups = []
+    split_groups.each do |group|
+      @groups << group.first
+
+    end
+     group_hash = Hash[@groups.map {|group, nations| [group, nations]}]
+
+  end
+
+  def world_cup_groups
+
   end
 end
